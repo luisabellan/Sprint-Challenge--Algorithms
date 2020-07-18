@@ -14,8 +14,6 @@ Your function must utilize recursion. It cannot contain any loops.
 
 
 def  count_th(str1, str2 ='th'): 
-
-    str2 = 'th'
       
     n1 = len(str1)
     n2 = len(str2)
