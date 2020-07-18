@@ -40,7 +40,7 @@ def  count_th(str1, str2 ='th'):
 # Test Code 
   
 
-if __name__ == '__main__': 
+""" if __name__ == '__main__': 
        
     str1 = "gullithwertq";  
     str2 = "th"; 
@@ -48,5 +48,5 @@ if __name__ == '__main__':
   
     str1 = "hikathkathsthhi"; 
     str2 = "th"; 
-    print(count_th(str1, str2));  
+    print(count_th(str1, str2));   """
   
