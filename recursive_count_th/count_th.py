@@ -17,8 +17,8 @@ def  count_th(str1, str2 ='th'):
 
     str2 = 'th'
       
-    n1 = len(str1); 
-    n2 = len(str2); 
+    n1 = len(str1)
+    n2 = len(str2)
       
     # Base Case 
     if (n1 == 0 or n1 < n2): 
@@ -29,12 +29,12 @@ def  count_th(str1, str2 ='th'):
     # substring matches 
     if (str1[0 : n2] == str2): 
         return count_th(str1[n2 - 1:],  
-                             str2) + 1; 
+                             str2) + 1
   
     # Otherwise, return the count  
     # from the remaining index 
     return count_th(str1[n2 - 1:],  
-                         str2); 
+                         str2)
   
   
 # Test Code 
@@ -42,11 +42,11 @@ def  count_th(str1, str2 ='th'):
 
 """ if __name__ == '__main__': 
        
-    str1 = "gullithwertq";  
-    str2 = "th"; 
-    print(count_th(str1, str2)); 
+    str1 = "gullithwertq"  
+    str2 = "th" 
+    print(count_th(str1, str2)) 
   
     str1 = "hikathkathsthhi"; 
-    str2 = "th"; 
-    print(count_th(str1, str2));   """
+    str2 = "th"
+    print(count_th(str1, str2))   """
   
