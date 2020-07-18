@@ -81,56 +81,79 @@ class SortingRobot:
         Turn on the robot's light
         """
         self._light = "ON"
+
     def set_light_off(self):
         """
         Turn off the robot's light
         """
         self._light = "OFF"
+
     def light_is_on(self):
         """
         Returns True if the robot's light is on and False otherwise.
         """
         return self._light == "ON"
 
-    def sort(self,l):
-        
-       
-        """  Sort the robot's list. """
-       
-        l = self._list
+    def swap(self):
+        self.swap_item()
+        self.move_left()
+        self.swap_item()
+        self.move_right()
 
-        # Fill this out
-        if len(self._list) < 2:
-            # Base case: self._lists with 0 or 1 element are already "sorted"
-            return self._list
-        else:
-            # Recursive case
-            pivot = self._list[0]
-            # Sub-self._list of all the elements less than the pivot
-            less = [ i for i in self._list[1:] if i <= pivot]
-            # Sub-self._list of all the elements greater than the pivot
-            greater = [i for i in self._list[1:] if i > pivot]
+    def sort(self):
 
-            return self.sort(less) + [pivot] + self.sort(greater)
-    
-        # def sort(self):
-        #    if len(self._list) < 2:
-        #        # Base case: arrays with 0 or 1 element are already "sorted"
-        #        return  self._list
+        self.swap_item()  # pick card
+        self.move_right()
 
-        #    else:
-        #        # Recursive case
+        while self.can_move_right():
+            print(f'position: {self._position}')
+            print(f'item: {self._item}')
+            self.swap_item()  # pick card
+            self.move_right()
 
-        #        return self.sort([ i for i in self._list[1:] if i <= self._list[0]]) + [self._list[0]] + self.sort([i for i in self._list[1:] if i > self._list[0]])  """ 
+            if self.compare_item() == 1:  # if greater than current
+                self.swap()
+
+            if self.compare_item() == -1:
+                self.move_right()
+
+            if self.compare_item == 0:
+                self.set_light_off()
+
+        """ if self.compare_item() == 1:
+            self.move_right()
+            print(self._position)
+            self.swap_item() """
+        """ while self.can_move_right():
+            if self.compare_item() == 1:
+                self.move_right()
+                self.swap """
+
+        """ while self.can_move_right():
+            if self.compare_item() == 1:
+                self.move_right()
+                self.swap_item()
+                self.move_left()
+                self.swap_item()
+            self.move_right()"""
+
+        # for i in if len(self._list) < 2:
+        # Base case: arrays with 0 or 1 element are already "sorted"
+        #    return  self._list
+
+        # else:
+        # Recursive case
+
+        #    return self.sort([i for i in self._list[1:] if self.compare_item() == -1]) + [self._list[0]] + self.sort([i for i in self._list[1:] if self.compare_item() == 1])
 
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
     # with `python robot_sort.py`
 
-    l = [15, 41, 58, 49, 26, 4, 28, 8, 61, 60, 65, 21, 78, 14, 35, 90, 54, 5, 0, 87, 82, 96, 43, 92, 62, 97, 69, 94, 99, 93, 76, 47, 2, 88, 51, 40, 95, 6, 23, 81, 30, 19, 25, 91, 18, 68, 71, 9, 66, 1, 45, 33, 3, 72, 16, 85, 27, 59, 64, 39, 32, 24, 38, 84, 44, 80, 11, 73, 42, 20, 10, 29, 22, 98, 17, 48, 52, 67, 53, 74, 77, 37, 63, 31, 7, 75, 36, 89, 70, 34, 79, 83, 13, 57, 86, 12, 56, 50, 55, 46]
-
+    #l = [15, 41, 58, 49, 26, 4, 28, 8, 61, 60, 65, 21, 78, 14, 35, 90, 54, 5, 0, 87, 82, 96, 43, 92, 62, 97, 69, 94, 99, 93, 76, 47, 2, 88, 51, 40, 95, 6, 23, 81, 30, 19, 25, 91, 18, 68, 71, 9, 66, 1, 45, 33, 3, 72, 16, 85, 27, 59, 64, 39, 32, 24, 38, 84, 44, 80, 11, 73, 42, 20, 10, 29, 22, 98, 17, 48, 52, 67, 53, 74, 77, 37, 63, 31, 7, 75, 36, 89, 70, 34, 79, 83, 13, 57, 86, 12, 56, 50, 55, 46]
+    l = [5, 3, 7, 4, 8, 1]
     robot = SortingRobot(l)
 
-    robot.sort(l) # delete the 'l'
+    robot.sort()
     print(robot._list)
