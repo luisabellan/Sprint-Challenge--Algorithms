@@ -92,12 +92,36 @@ class SortingRobot:
         """
         return self._light == "ON"
 
-    def sort(self):
+   """  def sort(self,l):
+        
         """
         Sort the robot's list.
         """
+        l = self._list
+
         # Fill this out
-        pass
+        if len(self._list) < 2:
+            # Base case: self._lists with 0 or 1 element are already "sorted"
+            return self._list
+        else:
+            # Recursive case
+            pivot = self._list[0]
+            # Sub-self._list of all the elements less than the pivot
+            less = [ i for i in self._list[1:] if i <= pivot]
+            # Sub-self._list of all the elements greater than the pivot
+            greater = [i for i in self._list[1:] if i > pivot]
+
+            return self.sort(less) + [pivot] + self.sort(greater) """
+    
+        def sort(self):
+            if len(self._list) < 2:
+                # Base case: arrays with 0 or 1 element are already "sorted"
+                return  self._list
+
+            else:
+                # Recursive case
+
+                return self.sort([ i for i in self._list[1:] if i <= self._list[0]]) + [self._list[0]] + self.sort([i for i in self._list[1:] if i > self._list[0]]) 
 
 
 if __name__ == "__main__":
@@ -108,5 +132,5 @@ if __name__ == "__main__":
 
     robot = SortingRobot(l)
 
-    robot.sort()
+    robot.sort(l) # delete the 'l'
     print(robot._list)
