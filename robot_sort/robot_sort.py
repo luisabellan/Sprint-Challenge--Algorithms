@@ -94,41 +94,42 @@ class SortingRobot:
         """
         return self._light == "ON"
 
+    # swap cards if next card has a greater value
     def swap_if_greater(self):
-        self.swap_item()
-        self.move_left()
-        self.swap_item()
-        self.move_right()
-        self.set_light_off()
+        self.swap_item() # swap held card and card in front of robot
+        self.move_left() # move held card to the left
+        self.swap_item() # put it down
+        self.move_right() # move robot to the right
+        self.set_light_off() # swap has been done (swap mode off)
 
-    def put_it_back_if_smaller(self):
-        self.move_left()
-        self.swap_item()
-        self.move_right()
+    def dont_swap_if_smaller(self):
+        self.move_left() # robot goes back to the left
+        self.swap_item() # puts it down
+        self.move_right() # robot moves to the right, getting ready for the next iteration
 
     def sort(self):
         while self.light_is_on() == False:
 
-            self.set_light_on()
+            self.set_light_on() # this is like saying the robot is ready to swap (swap mode on)
 
-            while self.can_move_right():
+            while self.can_move_right(): # to make sure we are not working with the last card, so we can move one spot to the right
                 
-                self.swap_item()
-                self.move_right()
+                self.swap_item() # robots holds the card which is in front of it
+                self.move_right() #moves it to the right to be compared with the one on the right of it
 
-                if self.compare_item() == 1:
+                if self.compare_item() == 1: # confirms that the held card is of a higher value than the one to the right 
 
-                    self.swap_if_greater()
+                    self.swap_if_greater() # swaps them
 
                 else:
                     
-                    self.put_it_back_if_smaller()
+                    self.dont_swap_if_smaller() # robot puts the card back to where it was and moves to the right
 
-            if not self.light_is_on():
+            if not self.light_is_on(): # if the robot's light is off
 
-                while self.can_move_left():
+                while self.can_move_left(): #checks if robot isn't at the far-left edge yet
 
-                    self.move_left()
+                    self.move_left() # moves to the left
 
           
 
