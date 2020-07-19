@@ -94,58 +94,40 @@ class SortingRobot:
         """
         return self._light == "ON"
 
-    def swap(self):
+    def swap_if_greater(self):
         self.swap_item()
         self.move_left()
         self.swap_item()
         self.move_right()
 
-    def sort(self):
-
-        self.swap_item()  # pick card
+    def swap_if_smaller(self):
+        self.move_left()
+        self.swap_item()
         self.move_right()
 
-        while self.can_move_right():
-            print(f'position: {self._position}')
-            print(f'item: {self._item}')
-            self.swap_item()  # pick card
-            self.move_right()
-
-            if self.compare_item() == 1:  # if greater than current
-                self.swap()
-
-            if self.compare_item() == -1:
-                self.move_right()
-
-            if self.compare_item == 0:
-                self.set_light_off()
-
-        """ if self.compare_item() == 1:
-            self.move_right()
-            print(self._position)
-            self.swap_item() """
-        """ while self.can_move_right():
-            if self.compare_item() == 1:
-                self.move_right()
-                self.swap """
-
-        """ while self.can_move_right():
-            if self.compare_item() == 1:
-                self.move_right()
+    def sort(self):
+        while self.light_is_on() == False:
+            self.set_light_on()
+            while self.can_move_right():
                 self.swap_item()
-                self.move_left()
-                self.swap_item()
-            self.move_right()"""
+                self.move_right()
+                if self.compare_item() > 0:
+                    self.swap_item()
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+                    self.set_light_off()
+                else:
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+            if not self.light_is_on():
+                while self.can_move_left():
+                    self.move_left()
 
-        # for i in if len(self._list) < 2:
-        # Base case: arrays with 0 or 1 element are already "sorted"
-        #    return  self._list
+          
 
-        # else:
-        # Recursive case
-
-        #    return self.sort([i for i in self._list[1:] if self.compare_item() == -1]) + [self._list[0]] + self.sort([i for i in self._list[1:] if self.compare_item() == 1])
-
+        
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
