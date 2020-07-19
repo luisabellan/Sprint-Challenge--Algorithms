@@ -99,30 +99,35 @@ class SortingRobot:
         self.move_left()
         self.swap_item()
         self.move_right()
+        self.set_light_off()
 
-    def swap_if_smaller(self):
+    def put_it_back_if_smaller(self):
         self.move_left()
         self.swap_item()
         self.move_right()
 
     def sort(self):
         while self.light_is_on() == False:
+
             self.set_light_on()
+
             while self.can_move_right():
+                
                 self.swap_item()
                 self.move_right()
-                if self.compare_item() > 0:
-                    self.swap_item()
-                    self.move_left()
-                    self.swap_item()
-                    self.move_right()
-                    self.set_light_off()
+
+                if self.compare_item() == 1:
+
+                    self.swap_if_greater()
+
                 else:
-                    self.move_left()
-                    self.swap_item()
-                    self.move_right()
+                    
+                    self.put_it_back_if_smaller()
+
             if not self.light_is_on():
+
                 while self.can_move_left():
+
                     self.move_left()
 
           
