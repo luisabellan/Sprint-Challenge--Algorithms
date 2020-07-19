@@ -109,7 +109,7 @@ loop thru list of floors:
     return current_floor
 ---------------------------------------------------------
 
-Here the runtime depends on which floor it breaks, if it breaks on the first floor would be best-case scenario and that would be O(1), for the second floor O(2), etc in the worst-case scenario (time complexity) it would be O(f), where f is the number of floors the building has, so in this case it would be O(6)
+Here the runtime depends on which floor it breaks on, if it breaks on the first floor would be best-case scenario and that would be O(1), for the second floor O(2), etc in the worst-case scenario (time complexity) it would be O(f), where f is the number of floors the building has, so in this case it would be O(6)
 
  Runtime = O(n)
 
