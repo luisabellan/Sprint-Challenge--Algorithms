@@ -63,6 +63,7 @@ Runtime = O(n!)
 
 
 --strategy--
+Plan
 we start by throwing an egg from the ground floor (in the UK) (or the first floor (in the USA)) and see if it breaks, if it doesn't, we take it to the first floor if they can be reused, or we try with a new one if it can't be reused and try again, if it doesn't break we try yet again a floor higher, and we keep doing this until we find the floor where if thrown it breaks and that floor is f.
 
 
@@ -79,16 +80,42 @@ broken _eggs = 1
 
 solution --> dropped + broken = f + 1
 
+floors = [1, 2, 3, 4, 5, 6]
+eggs = 10000
+f = 0  #floor on which the first egg breaks
+broken = 0
+current_floor = 0 or None 
+eggIsBroken = False
+
+-------------------------------------
+function throw_and_egg ():
+  
+  if egg breaks:
+    eggs -= 1
+    broken += 1
+
+    return 1 
 
 
-loop f times: 
-  throw_and_egg()
+loop thru list of floors: 
 
-Here the runtime depends only on f so: runtime complexity  --> O(f) or in the standard way we would say:
+  #base case
+  if eggIsBroken == True:
+    return floor at which it broke
+
+  current_floor += 1
+
+  if throw_and_egg() == 1: #if it breaks
+    return current_floor
+---------------------------------------------------------
+
+Here the runtime depends on which floor it breaks, if it breaks on the first floor would be best-case scenario and that would be O(1), for the second floor O(2), etc in the worst-case scenario (time complexity) it would be O(f), where f is the number of floors the building has, so in this case it would be O(6)
+
+ Runtime = O(n)
 
 SOLUTION:
 
-runtime = O(n)
+
 
 
 
