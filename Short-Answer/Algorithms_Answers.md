@@ -97,21 +97,23 @@ function throw_and_egg ():
     return 1 
 
 
-loop thru list of floors: 
+loop thru list of floors:                           #O(6)
 
   #base case
   if eggIsBroken == True:
-    return floor at which it broke
+    return floor at which it broke                   # O(1)
 
-  current_floor += 1
+  current_floor += 1                                 #O(1)
 
-  if throw_and_egg() == 1: #if it breaks
+  if throw_and_egg() == 1: #if it breaks                
     return current_floor
 ---------------------------------------------------------
 
 Here the runtime depends on which floor it breaks on, if it breaks on the first floor would be best-case scenario and that would be O(1), for the second floor O(2), etc in the worst-case scenario (time complexity) it would be O(f), where f is the number of floors the building has, so in this case it would be O(6)
 
- Runtime = O(n)
+
+
+
 
 SOLUTION:
 
