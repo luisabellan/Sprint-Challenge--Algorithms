@@ -103,9 +103,9 @@ For If statements we take the slowest sequence of statements, in this case we ta
 Here the runtime depends on which floor it breaks on, if it breaks on the first floor would be best-case scenario and that would be O(1), average case would be O(3n), where n is the number of floors the building has, so the worst-case scenario (time complexity) would be O(n).
 
 SOLUTION:
+best-case = O(1)
+average-case = O(n) \* ( O(1) + O(1) + O(1) ) = O(3n)
 
-runtime when n is small = O(n) \* ( O(1) + O(1) + O(1) ) = O(3n)
+"3" becomes insignificant when n is huge, we can eliminate it:
 
-"3" becomes insignificant when n is huge, we can eliminate it too:
-
-worst case scenario (n is huge) = runtime complexity O(n)
+worst-case scenario = runtime complexity O(n)
